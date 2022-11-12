@@ -1,0 +1,63 @@
+{% load static %} {% block body %} {% include 'navbar.html' %}
+<div
+  class="akbox"
+  id="datatable"
+  style="padding: 20px; min-height: 300px; margin: 2px; padding: 10px"
+>
+  <center class="h1 white my-2">Search</center>
+  <form class="searchtable" style="padding: 0; margin: 0">
+    <div>
+      <input type="text" name="name" id="name" />
+      <label for="name">Name</label>
+    </div>
+    <div>
+      <input type="text" name="spel" id="spel" />
+      <label for="spel">Specialization</label>
+    </div>
+    <div>
+      <input type="text" name="name" id="name" />
+      <label for="name">Name</label>
+    </div>
+    <button class="ui green basic button" style="margin: 15px" type="submit">
+      <i class="search icon"></i>
+    </button>
+  </form>
+  <center
+    style="width: 100%; height: max-content; display: flex; overflow: scroll"
+  >
+    <table id="example" style="" class="ui celled padded table">
+      <thead>
+        <tr>
+          <th>SNo.</th>
+          <th>DoctorId</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Mobile</th>
+          <th>Specialization</th>
+          <th>Book Appointment</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for d in doctors%}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{d.user.username}}</td>
+          <td>{{d.user.get_full_name}}</td>
+          <td>
+            <img
+              src="{{d.image.url}}"
+              width="150px"
+              height="150px"
+              style="border-radius: 50%"
+            />
+          </td>
+          <td>{{d.mobile}}</td>
+          <td>{{d.specialization}}</td>
+          <td><a class="ui green button" href="">Book Appointment</a></td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </center>
+</div>
+{% endblock body%}

@@ -1,0 +1,9 @@
+{%load static%} {% block body %}{% include 'navbar.html' %}
+<div class="dashboard akbox" style="padding: 10px">
+  {%if p%}
+  <div class="section-head white">{{p.user.get_full_name}}</div>
+  {%endif%} {%if d%}
+  <div class="">{{d.user.get_full_name}}</div>
+  {%endif%}
+</div>
+{% endblock body %}

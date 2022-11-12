@@ -1,0 +1,7 @@
+{%load static%} {% block body %}{% include 'navbar.html' %}
+<div class="dashboard akbox" style="padding: 10px">
+  {{p.user.get_full_name}}
+  <i class="facebook big yellow icon"></i>
+  <a href="{%url 'logout'%}" class="ui red button">Logout</a>
+</div>
+{% endblock body %}

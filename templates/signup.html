@@ -1,0 +1,130 @@
+{% load static %} {% block body %} {% include 'navbar.html' %}
+
+<script>
+  function Checkpassword() {
+    if (document.signup.pwd.value != document.signup.cpwd.value) {
+      alert("password does not match");
+      return false;
+    } else {
+      return true;
+    }
+  }
+</script>
+
+<div class="ui container akbox sign_in">
+  <h6 class="white h1" align="center" style="font-size: 35px">
+    Create Account
+  </h6>
+  <form
+    class="ui form"
+    name="signup"
+    onsubmit="return Checkpassword()"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <div class="two fields">
+      <div class="field">
+        <label for="fname">FirstName : </label>
+        <input
+          type="text"
+          name="fname"
+          id="fname"
+          placeholder="Enter first Name"
+          required
+        />
+      </div>
+      <div class="field">
+        <label for="lname">LastName : </label>
+        <input
+          type="text"
+          name="lname"
+          id="lname"
+          placeholder="Enter Last Name"
+        />
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label for="dob">Date of Birth : </label>
+        <input type="Date" name="dob" id="dob" required />
+      </div>
+      <div class="inline field">
+        <label for="gender">Gender : </label>
+        <div
+          style="
+            border: 2px solid green;
+            margin-top: 10px;
+            height: max-content;
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+          "
+        >
+          <input type="radio" name="gender" id="male" value="male" />
+          <label for="male" style="margin: 10px">Male</label>
+          <input type="radio" name="gender" id="female" value="female" />
+          <label for="male" style="margin: 10px">Female</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="mobile">Mobile : </label>
+      <input
+        type="text"
+        name="mobile"
+        id="mobile"
+        placeholder="Enter mobile number"
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="email">Email : </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter Email Address"
+        required
+      />
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label for="pwd">Password : </label>
+        <input
+          type="password"
+          name="pwd"
+          id="pwd"
+          placeholder="Enter Password"
+          required
+        />
+      </div>
+      <div class="field">
+        <label for="cpwd">Confirm Password : </label>
+        <input
+          type="password"
+          name="cpwd"
+          id="cpwd"
+          placeholder="Re-enter Password"
+          required
+        />
+      </div>
+    </div>
+    <div class="flex-space-around">
+      <button class="ui positive big button" type="submit">SignUp</button>
+      <button class="ui positive big button" type="clear">Clear</button>
+      <button class="ui positive big button" type="reset">Reset</button>
+    </div>
+  </form>
+</div>
+
+{% if error == "yes"%}
+<script>
+  alert("Some errors in signup");
+</script>
+{% endif %} {% if error == "no" and u != ""%}
+<script>
+  alert(`signup successfull your Username is {{u}}`);
+  window.location = ('{%url 'plogin'%}')
+</script>
+{%endif%} {% endblock body %}

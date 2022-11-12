@@ -1,0 +1,45 @@
+{% load static %} {% block body %} {% include 'navbar.html' %}
+<div
+  class="home"
+  style="
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div
+    style="
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.686);
+      padding-top: 30px;
+      border-radius: 10px;
+    "
+  >
+    <h6 align="center" class="h1 white">Forgot Password</h6>
+    {%for m in messages%} {%if m.tags%}
+    <div class="{{m.tags}}">{{m}}</div>
+    {%endif%} {%endfor%}
+    <form class="ui form" style="padding: 1rem" method="POST">
+      {% csrf_token %}
+      <label for="name" class="white" style="font-size: 20px">Email : </label>
+      <input type="text" name="email" id="name" placeholder="Enter Email" />
+      <div style="display: grid; grid-template-columns: auto auto auto">
+        <a class="ui blue button" href="{%url 'plogin'%}">SignIn</a>
+        <a class="ui blue button" href="{%url 'signup'%}">Create Account</a>
+        <button class="ui blue button" type="submit">Send OTP</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% if error == "yes"%}
+<script>
+  alert("Email is not Registered,Create an Account");
+</script>
+{% endif %} {% if error == "no"%}
+<script>
+  alert(`Mail sent succesfully`);
+</script>
+{%endif%} {% endblock body %}

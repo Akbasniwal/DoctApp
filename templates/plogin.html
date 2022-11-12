@@ -1,0 +1,49 @@
+{% load static %} {% block body %} {% include 'navbar.html' %}
+<div class="home">
+  <div class="ui container akbox sign_in">
+    <div class="titlebar">SignIn As</div>
+    <hr style="margin: 20px" />
+    <div class="flexbox-fill">
+      <a class="ui primary button">Patient</a>
+      <a href="{%url 'dlogin'%}" class="ui positive button">Doctor</a>
+      <a href="/admin" class="ui positive button">Admin</a>
+    </div>
+    <form action="" class="ui form" method="POST" autocomplete="off">
+      {% csrf_token %}
+      <label for="name">Username : </label>
+      <input
+        type="text"
+        name="username"
+        id="name"
+        placeholder="Enter Username"
+      />
+      <label for="pass">Password : </label>
+      <input
+        type="password"
+        name="password"
+        id="pass"
+        placeholder="Enter Password"
+      />
+      <div class="flex-space-between big" style="margin: 10px">
+        <a href="{%url 'signup'%}">Doesn't have Account?</a>
+        <a href="{%url 'forgot_pass'%}">Forgot password?</a>
+      </div>
+      <div class="flex-space-around btn-small">
+        <button class="ui positive button" type="submit">SignIn</button>
+        <button class="ui positive button" type="clear">Clear</button>
+        <button class="ui positive button" type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% if error == "yes"%}
+<script>
+  alert("Username or password is Invalid");
+</script>
+{% endif %} {% if error == "no"%}
+<script>
+  alert(`Login successfull`);
+  window.location = ('{%url 'dashboard'%}')
+</script>
+{%endif%} {% endblock body %}
