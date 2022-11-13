@@ -13,5 +13,6 @@ urlpatterns = [
     path('bookapp', bookapp, name="bookapp"),
     path('dashboard', dashboard, name='dashboard'),
     path('change-password/<token>/', change_password, name="change-password"),
-    path('forgot_pass', forgot_pass, name="forgot_pass")
+    path('forgot_pass', forgot_pass, name="forgot_pass"),
+    path('bookAppointment/<username>', bookapp, name='bookAppointment')
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

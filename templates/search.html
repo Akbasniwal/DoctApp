@@ -5,23 +5,37 @@
   style="padding: 20px; min-height: 300px; margin: 2px; padding: 10px"
 >
   <center class="h1 white my-2">Search</center>
-  <form class="searchtable" style="padding: 0; margin: 0">
-    <div>
-      <input type="text" name="name" id="name" />
-      <label for="name">Name</label>
+  <form class="searchtable" method="get" autocomplete="off">
+    <div class="inpbox">
+      <input
+        type="text"
+        name="name"
+        id="name"
+        value="{{name}}"
+        placeholder="Doct_Name"
+      />
     </div>
-    <div>
-      <input type="text" name="spel" id="spel" />
-      <label for="spel">Specialization</label>
+    <div class="inpbox">
+      <input
+        type="text"
+        name="spel"
+        id="spel"
+        value="{{spel}}"
+        placeholder="Specialization"
+      />
+
+      {% comment %} <label for="spel">Specialization</label> {% endcomment %}
     </div>
-    <div>
-      <input type="text" name="name" id="name" />
-      <label for="name">Name</label>
+    <div class="inpbox">
+      <input type="text" name="id" id="id" value="{{id}}" placeholder="ID" />
     </div>
     <button class="ui green basic button" style="margin: 15px" type="submit">
       <i class="search icon"></i>
     </button>
   </form>
+  {% if size == 0 %}
+  <center class="h1 white my-4">No Search Results Found</center>
+  {% else %}
   <center
     style="width: 100%; height: max-content; display: flex; overflow: scroll"
   >
@@ -59,5 +73,6 @@
       </tbody>
     </table>
   </center>
+  {% endif %}
 </div>
 {% endblock body%}

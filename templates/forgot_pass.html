@@ -23,12 +23,17 @@
     {%endif%} {%endfor%}
     <form class="ui form" style="padding: 1rem" method="POST">
       {% csrf_token %}
-      <label for="name" class="white" style="font-size: 20px">Email : </label>
+
+      <label for="uname" class="white" style="font-size: 20px">
+        Username :
+      </label>
+      <input type="text" name="uname" id="uname" placeholder="Enter Username" />
+      <label for="name" class="white" style="font-size: 20px"> Email : </label>
       <input type="text" name="email" id="name" placeholder="Enter Email" />
       <div style="display: grid; grid-template-columns: auto auto auto">
         <a class="ui blue button" href="{%url 'plogin'%}">SignIn</a>
         <a class="ui blue button" href="{%url 'signup'%}">Create Account</a>
-        <button class="ui blue button" type="submit">Send OTP</button>
+        <button class="ui blue button" type="submit">Send Mail</button>
       </div>
     </form>
   </div>

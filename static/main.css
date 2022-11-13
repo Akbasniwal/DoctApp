@@ -268,9 +268,19 @@ div #example_info {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.my-3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.my-4{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
 /* search  */
 .searchtable{
+    margin: 0 !important;
+    padding: 0px !important;
     font-size: 1vw !important;
     width: calc(100%-10px);
     margin: 0px;
@@ -282,10 +292,12 @@ div #example_info {
     font-size: min(20px,6vw) !important;
 }
 .searchtable div input{
-    padding: -10px;
-    font-size: min(20px,6vw) !important;
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+    font-size: min(20px,4vw) !important;
     text-align: center;
-    width: 15vw;
+    width: 99%;
+    margin: 5px;
     background-color: transparent !important;
     color: white;
     border: none;
@@ -294,12 +306,34 @@ div #example_info {
 .searchtable div input:focus{
     outline: none;
     border: none !important;
-    border-bottom: 1px solid white !important; 
+    color: rgb(18,255,1);
+    border-bottom: 1.5px solid rgb(18, 255, 1) !important; 
 }
+.searchtable div input::placeholder{
+    color: rgb(191,191,191);
+}
+
 #datatable{
     height: max-content;
 }
 
+.cross{
+    cursor: pointer;
+    position: absolute;
+    top: 35%;
+    right: 0;
+    color: rgb(196, 191, 191);
+    font-size: 15px !important;
+    background: transparent;
+    border: none;
+}
+.cross:hover{
+    color: white;
+}
+
+.inpbox{
+    position: relative;
+}
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
@@ -323,3 +357,5 @@ div #example_info {
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.531); 
   }
+
+

@@ -116,10 +116,16 @@ def Logout(request):
 
 
 def search(request):
-    d = {}
-    doct = Doctor.objects.all()
-    d['doctors'] = doct
-    return render(request, 'search.html', d)
+    name = request.GET.get('name')
+    sp = request.GET.get('spel')
+    idd = request.GET.get('id')
+    if name and sp and idd:
+        doct = Doctor.objects.filter(
+            specialization__contains=sp, user__first_name__contains=name, user__username__contains=idd)
+    else:
+        doct = Doctor.objects.all()
+        sp = name = idd = ''
+    return render(request, 'search.html', {'doctors': doct, 'size': len(doct), 'name': name, 'spel': sp, 'id': idd})
 
 
 def bookapp(request):
@@ -162,10 +168,11 @@ def forgot_pass(request):
     uid = None
     try:
         if request.method == 'POST':
+            uname = request.POST.get('uname')
             email = request.POST.get('email')
-            if User.objects.filter(email=email):
+            if User.objects.filter(email=email, username=uname):
                 try:
-                    user = User.objects.get(email=email)
+                    user = User.objects.get(email=email, username=uname)
                     token = str(uuid.uuid4())
                     fname = user.get_full_name()
                     try:
