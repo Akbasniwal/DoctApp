@@ -8,10 +8,12 @@
 .flex-space-around{
     display: flex;
     justify-content: space-around;
+    flex-flow: wrap;
 }
 .flex-space-between{
     display: flex;
     justify-content: space-between;
+    flex-flow: wrap;
 }
 .grid{
     display: grid;
@@ -43,13 +45,13 @@ a{
 .white{
     color:white;
 }
-input{
+input,select,option{
     font-size: large !important;
     padding: 10px !important;
     margin-top: 10px !important;
     margin-bottom: 10px !important;
 }
-input:focus{
+input:focus,select:focus{
     border: 2px solid rgb(0, 255, 0) !important;
 }
 .img{
@@ -359,3 +361,102 @@ div #example_info {
   }
 
 
+/* .formcontain{
+    position: relative;
+}
+.sideicon{
+    position: absolute;
+    left: 10px;
+    top: 35%;
+}
+.formcontain input{
+    padding-left: 50px !important;
+}
+.formcontain i{
+    font-size: x-large !important;
+    color: green !important;
+} */
+
+/* booking */
+.booking_details{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.booking_details div{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+.booking_details div div{
+    font-size: 22px;
+}
+.booking_details div i{
+    color: white;
+}
+.doct_prof img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+    z-index: 1;
+}
+.doct_prof div{
+    width: max-content;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 12px;
+    z-index: 0;
+    margin-left: -10px;
+    background-color: rgb(9, 134, 111);
+}
+.doct_det i{
+    margin: 20px !important;
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+    font-size: xx-large !important;
+}
+
+
+
+/* loader */
+.back{
+    background-color: rgba(0, 0, 0, 0.66);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader{
+    height: 200px;
+    width: 250px;
+    overflow: hidden;
+    position: absolute;
+    margin: auto;
+}
+.loader::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('images/loader.svg');
+    animation: 2s linear infinite;
+}
+@keyframes pulse{
+    0%{
+        clip: rect(0,-50px,200px,0);
+    }
+    25%{
+        clip: rect(0,80px,200px,0);
+    }
+    75%{
+        clip: rect(0,170px,200px,0);
+    }
+    100%{
+        clip: rect(0,250px,200px,0);
+    }
+} 

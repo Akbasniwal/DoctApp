@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from home.models import Doctor, Patient
+from home.models import *
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from datetime import *
 from .helpers import send_forget_pass_mail
 import uuid
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -119,7 +120,7 @@ def search(request):
     name = request.GET.get('name')
     sp = request.GET.get('spel')
     idd = request.GET.get('id')
-    if name and sp and idd:
+    if name or sp or idd:
         doct = Doctor.objects.filter(
             specialization__contains=sp, user__first_name__contains=name, user__username__contains=idd)
     else:
@@ -128,8 +129,26 @@ def search(request):
     return render(request, 'search.html', {'doctors': doct, 'size': len(doct), 'name': name, 'spel': sp, 'id': idd})
 
 
-def bookapp(request):
-    return render(request, 'bookapp.html')
+@login_required
+def bookapp(request, id=None):
+    d, mode, p = '', '', ''
+    try:
+        d = Doctor.objects.get(user__username=id)
+    except:
+        pass
+    try:
+        if request.method == 'POST':
+            md = request.POST.get('mode')
+            p = Patient.objects.get(user__username=request.user)
+            x = len(Appointment.objects.all())
+            Appointment.objects.create(
+                app_id=x, patient=p, doctor=d, mode=md)
+            messages.success(
+                request, 'Booked Appointment Successfully,wait for approval for 2 hours')
+    except Exception as e:
+        messages.error(
+            request, e)
+    return render(request, 'bookapp.html', {'doctor': d})
 
 
 def change_password(request, token):

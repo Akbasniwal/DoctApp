@@ -31,9 +31,10 @@ class Doctor(models.Model):
         return self.user.username
 
 
-# class Appointment(models.Model):
-#     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-#     Doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-#     date_time = models.DateTimeField()
-#     status = models.CharField(max_length=10, null=True)
-#     mode = models.CharField(max_length=10)
+class Appointment(models.Model):
+    app_id = models.CharField(primary_key=True, max_length=50)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    date_time = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(max_length=10, blank=True, null=True)
+    mode = models.CharField(max_length=10)

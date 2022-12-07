@@ -20,11 +20,12 @@
     <img src="{%static 'images/2.jpg'%}" alt="" class="img" />
     <div class="menubar">
       <div class="header">
-        <img
-          src="{%static 'images/icon.png'%}"
-          alt=""
-          style="margin: 5px; height: 55px"
-        />
+        <a href="{%url 'home'%}">
+          <img
+            src="{%static 'images/icon.png'%}"
+            alt=""
+            style="margin: 5px; height: 55px"
+        /></a>
         <div class="menuitems">
           <a href="{%url 'home'%}"> Home </a>
           <a href="#contact">Contact</a>

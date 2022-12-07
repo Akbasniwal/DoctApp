@@ -1,7 +1,36 @@
-{%load static%} {% block body %}{% include 'navbar.html' %}
-<div class="dashboard akbox" style="padding: 10px">
-  {{p.user.get_full_name}}
-  <i class="facebook big yellow icon"></i>
-  <a href="{%url 'logout'%}" class="ui red button">Logout</a>
+{% load static %} {% block body %} {% include 'navbar.html' %}
+<div class="home">
+  <div class="ui container akbox sign_in">
+    <div class="white h1" style="width: 100%; text-align: center">
+      Appointment Details
+    </div>
+    <div class="flex-space-around">
+      <div class="booking_details">
+        <div class="doct_prof">
+          <img src="../{{doctor.image.url}}" alt="loading" />
+          <div class="white">{{doctor.user.get_full_name}}</div>
+        </div>
+        <div class="doct_det">
+          <i class="user icon"></i>
+          <div class="white">{{doctor.user.username}}</div>
+        </div>
+        <div class="doct_det">
+          <i class="stethoscope icon"></i>
+          <div class="white">{{doctor.specialization}}</div>
+        </div>
+      </div>
+      <form class="ui form" method="post" style="border: none">
+        {% csrf_token %}
+        <select name="mode" id="mode">
+          <option value="online">Video Cunsultation</option>
+          <option value="offline">On-Hospital Cunsultation</option>
+        </select>
+        {% for m in messages %}
+        <div class="{{m.tags}}">{{m}}</div>
+        {% endfor %}
+        <button type="submit" class="ui green button">Book Appointment</button>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock body %}

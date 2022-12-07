@@ -23,11 +23,9 @@
         value="{{spel}}"
         placeholder="Specialization"
       />
-
-      {% comment %} <label for="spel">Specialization</label> {% endcomment %}
     </div>
     <div class="inpbox">
-      <input type="text" name="id" id="id" value="{{id}}" placeholder="ID" />
+      <input type="number" name="id" id="id" value="{{id}}" placeholder="ID" />
     </div>
     <button class="ui green basic button" style="margin: 15px" type="submit">
       <i class="search icon"></i>
@@ -67,7 +65,13 @@
           </td>
           <td>{{d.mobile}}</td>
           <td>{{d.specialization}}</td>
-          <td><a class="ui green button" href="">Book Appointment</a></td>
+          <td>
+            <a
+              class="ui green button"
+              href="{%url 'bookapp' id=d.user.username%}"
+              >Book Appointment</a
+            >
+          </td>
         </tr>
         {%endfor%}
       </tbody>

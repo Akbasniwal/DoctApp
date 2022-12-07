@@ -1,4 +1,5 @@
 {%load static%} {% block block %} {% include 'navbar.html' %}
+
 <div class="home">
   <div class="highlights">
     <div class="section-head">Highlights</div>
@@ -10,7 +11,7 @@
   </div>
   {% comment %} section_head {% endcomment %}
   <div class="section">
-    <div class="section-head">Contact</div>
+    <div class="section-head"></div>
     <div class="slider">
       <i class="big left angle icon"></i>
       <i class="big right angle icon"></i>
@@ -20,6 +21,9 @@
       <div class="section-item"><i class="heartbeat huge icon"></i></div>
       <div class="section-item"><i class="heartbeat huge icon"></i></div>
     </div>
+  </div>
+  <div class="back">
+    <div class="loader"></div>
   </div>
 </div>
 {% endblock block %}
