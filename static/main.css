@@ -418,15 +418,13 @@ div #example_info {
 }
 
 
-
 /* loader */
 .back{
-    background-color: rgba(0, 0, 0, 0.66);
+    background-color: rgba(0, 0, 0, 0.693);
     height: 100vh;
     width: 100vw;
     position: absolute;
     top: 0;
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -444,9 +442,9 @@ div #example_info {
     width: 100%;
     height: 100%;
     background: url('images/loader.svg');
-    animation: 2s linear infinite;
+    animation: react 2s linear infinite;
 }
-@keyframes pulse{
+@keyframes react{
     0%{
         clip: rect(0,-50px,200px,0);
     }
