@@ -469,6 +469,7 @@ div #example_info {
     height: 300px;
 }
 .section .card{
+    max-width: 1200px;
     height: 100%;
     width: 100%;
     margin: 10px;
@@ -480,6 +481,11 @@ div #example_info {
     justify-content: center;
     flex-direction: row;
     transition: 0.5s ease-in-out;
+}
+@media only screen and (max-width: 1000px) {
+    .section .card{
+        flex-direction: column;
+    }
 }
 .section .card:hover{
     scale: 1.05;
