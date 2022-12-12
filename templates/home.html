@@ -11,16 +11,24 @@
   </div>
   {% comment %} section_head {% endcomment %}
   <div class="section">
-    <div class="section-head"></div>
-    <div class="slider">
-      <i class="big left angle icon"></i>
-      <i class="big right angle icon"></i>
-      <div class="section-item"><i class="heartbeat huge icon"></i></div>
-      <div class="section-item"><i class="heartbeat huge icon"></i></div>
-      <div class="section-item"><i class="heartbeat huge icon"></i></div>
-      <div class="section-item"><i class="heartbeat huge icon"></i></div>
-      <div class="section-item"><i class="heartbeat huge icon"></i></div>
+    <div class="h1">Top Blogs</div>
+    {% for news in newss %}
+    <div class="card">
+      {% if forloop.counter0|divisibleby:"2"%}
+      <img src="{%static 'images/'%}{{news.img}}" />
+      <div class="content">
+        <div class="title">{{news.title}}</div>
+        {{news.content}}
+      </div>
+      {% else %}
+      <div class="content">
+        <div class="title">{{news.title}}</div>
+        {{news.content}}
+      </div>
+      <img src="{%static 'images/'%}{{news.img}}" />
+      {% endif %}
     </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock block %}

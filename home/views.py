@@ -12,7 +12,15 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     c = {
-        'images': ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']
+        'images': ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+        'newss': [
+            {'img': 'card1.jpg', 'title': '1',
+                'content': 'Doctors are well experinced and specialized in their area of expertise ,have done various surgries.Every day 25000 of patients are treated in thnis hospital and this is one of the best hospital of India'},
+            {'img': 'card2.jpg', 'title': '2',
+                'content': 'Multispecilist hospital with well experinced Doctors and excellent staff work in hospital working day and night for welfare of patients and hospital'},
+            {'img': 'card3.jpg', 'title': '3',
+                'content': 'Secure Doctor patient interaction for online appointments ,can be booked by patient and approved by doctor'},
+        ]
     }
     return render(request, 'home.html', c)
 

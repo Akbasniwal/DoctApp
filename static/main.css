@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&display=swap');
+
 /*                 background              */
 *{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* font-family: 'Roboto Slab', serif; */
+
 }
 body{
     -webkit-font-smoothing: antialiased;
@@ -133,36 +137,7 @@ input:focus,select:focus{
 
 
 
-/*                  slider                       */
-.section{
-    color: white;
-    background-color: rgba(0, 0, 0, 0.707);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) inset, 0 6px 20px 0 rgba(0, 0, 0, 0.19) inset;
-}
-.section-head{
-    padding: 20px;
-    font-size: 40px;
-    text-align: center;
-}
 
-.slider{
-    display: flex;
-}
-
-.slider div{
-    padding: 20px;
-    margin: 10px;
-    border-radius: 50%;
-    box-shadow: 0.5px 0.5px 0.5px 1.5px rgba(255, 255, 255, 0.659);
-}
-.slider div:hover{
-    box-shadow: 0.5px 0.5px 0.5px 1.5px rgba(62, 114, 89, 0.808);
-}
-
-/*  */
 
 
 
@@ -468,3 +443,61 @@ div #example_info {
         clip: rect(0,250px,200px,0);
     }
 } 
+
+
+
+
+
+
+
+
+
+/*                  slider                       */
+.section{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+.section-head{
+    padding: 20px;
+    font-size: 30px;
+}
+.section img{
+    height: 300px;
+}
+.section .card{
+    height: 100%;
+    width: 100%;
+    margin: 10px;
+    margin-top: 50px;
+    background-color: rgba(0, 0, 0, 0.601);
+    padding: 5px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    transition: 0.5s ease-in-out;
+}
+.section .card:hover{
+    scale: 1.05;
+}
+.section .content{
+    padding: 10px;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    color: white;
+    font-size: 20px;
+    word-spacing: 2px;
+}
+.section .content .title{
+    padding: 30px;
+    font-weight: bold;
+    font-size: large;
+}

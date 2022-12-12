@@ -1,9 +1,29 @@
 {%load static%} {% block body %}{% include 'navbar.html' %}
-<div class="dashboard akbox" style="padding: 10px">
+<div class="dashboard akbox" style="padding: 25px">
   {%if p%}
-  <div class="section-head white">{{p.user.get_full_name}}</div>
+  <center class="h1 white">Patient</center>
+  <div class="section-head white">{{p.user.get_full_name|capfirst}}</div>
+  <div style="color: white; margin-left: 20px; font-size: 20px">
+    Age: {{p.age}}
+    <br />
+    <br />
+    Mobile: {{p.mobile}}
+    <br />
+    <br />
+    email: {{p.user.email}}
+  </div>
   {%endif%} {%if d%}
-  <div class="">{{d.user.get_full_name}}</div>
+  <center class="h1 white">Doctor</center>
+  <div class="section-head white">{{d.user.get_full_name|capfirst}}</div>
+  <div style="color: white; margin-left: 25px; font-size: 20px">
+    Specialization: {{d.specialization}}
+    <br />
+    <br />
+    Mobile: {{d.mobile}}
+    <br />
+    <br />
+    email: {{d.user.email}}
+  </div>
   {%endif%}
 </div>
 {% endblock body %}

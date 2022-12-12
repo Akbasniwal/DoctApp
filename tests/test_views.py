@@ -4,9 +4,23 @@ from home.models import User, Patient, Doctor, Appointment
 
 
 class TestViews(TestCase):
-    def test_user_list(self):
+    def test_home(self):
         client = Client()
         response = client.get(reverse('home'))
 
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home/home.html')
+        self.assertTemplateUsed(response, 'home.html')
+
+    def test_search(self):
+        client = Client()
+        response = client.get(reverse('search'))
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'search.html')
+
+    def test_home(self):
+        client = Client()
+        response = client.get(reverse('home'))
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'home.html')
