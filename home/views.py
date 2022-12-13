@@ -124,17 +124,28 @@ def Logout(request):
     return redirect(plogin)
 
 
+@login_required
 def search(request):
+    t = ""
+    d = ""
+    appointments = ""
     name = request.GET.get('name')
     sp = request.GET.get('spel')
     idd = request.GET.get('id')
+    try:
+        d = Doctor.objects.get(user__username=request.user.username)
+        t = "d"
+        appointments = Appointment.objects.filter(doctor=d, status="created")
+    except:
+        pass
     if name or sp or idd:
         doct = Doctor.objects.filter(
             specialization__contains=sp, user__first_name__contains=name, user__username__contains=idd)
     else:
         doct = Doctor.objects.all()
         sp = name = idd = ''
-    return render(request, 'search.html', {'doctors': doct, 'size': len(doct), 'name': name, 'spel': sp, 'id': idd})
+
+    return render(request, 'search.html', {'apts': appointments, 't': t, 'doctors': doct, 'size': len(doct), 'name': name, 'spel': sp, 'id': idd})
 
 
 @login_required
@@ -150,13 +161,40 @@ def bookapp(request, id=None):
             p = Patient.objects.get(user__username=request.user)
             x = len(Appointment.objects.all())
             Appointment.objects.create(
-                app_id=x, patient=p, doctor=d, mode=md)
+                app_id=x, patient=p, doctor=d, mode=md, status="created")
             messages.success(
                 request, 'Booked Appointment Successfully,wait for approval for 2 hours')
     except Exception as e:
         messages.error(
             request, e)
     return render(request, 'bookapp.html', {'doctor': d})
+
+
+@login_required
+def approve(request, id=None):
+    app = ""
+    try:
+        app = Appointment.objects.get(app_id=id)
+        if(app.doctor.user == request.user):
+            app.status = "approved"
+            app.save()
+
+    except:
+        pass
+    return redirect('search')
+
+
+@login_required
+def reject(request, id=None):
+    app = ""
+    try:
+        app = Appointment.objects.get(app_id=id)
+        if(app.doctor == request.user):
+            app.status = "rejected"
+            app.save()
+    except:
+        pass
+    return redirect('search')
 
 
 def change_password(request, token):

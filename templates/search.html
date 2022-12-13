@@ -6,6 +6,39 @@
     style="padding: 20px; min-height: 300px; margin: 2px; padding: 10px"
   >
     <center class="h1 white my-2">Search</center>
+    {% if t == "d" %}
+    <table id="example" style="" class="ui celled padded table">
+      <thead>
+        <tr>
+          <th>SNo.</th>
+          <th>Patient_Name</th>
+          <th>P_ID</th>
+          <th>Mode</th>
+          <th>Approve</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for apt in apts%}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{apt.patient.user.get_full_name}}</td>
+          <td>{{apt.patient.user}}</td>
+          <td>{{apt.mode}}</td>
+
+          <td>
+            <a class="ui green button" href="{%url 'approve' id=apt.app_id%}" )"
+              >Approve</a
+            >
+            <a class="ui red button" href="{%url 'reject' id=apt.app_id%}"
+              >Reject</a
+            >
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+
+    {% else %}
     <form class="searchtable" method="get" autocomplete="off">
       <div class="inpbox">
         <input
@@ -32,11 +65,7 @@
         <i class="search icon"></i>
       </button>
     </form>
-    {% comment %}
-    <div class="back">
-      <div class="loader"></div>
-    </div>
-    {% endcomment %} {% if size == 0 %}
+    {% if size == 0 %}
     <center class="h1 white my-4">No Search Results Found</center>
     {% else %}
     <center
@@ -81,6 +110,7 @@
           {%endfor%}
         </tbody>
       </table>
+      {% endif %}
     </center>
     {% endif %}
   </div>

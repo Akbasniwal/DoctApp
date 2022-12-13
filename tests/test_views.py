@@ -18,9 +18,9 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'search.html')
 
-    def test_home(self):
-        client = Client()
-        response = client.get(reverse('home'))
+    # def test_login(self):
+    #     client = Client()
+    #     response = client.get(reverse('patient_login'))
 
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home.html')
+    #     self.assertEquals(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'login.html')
